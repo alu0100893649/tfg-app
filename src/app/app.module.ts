@@ -7,10 +7,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { MenuComponent } from '../components/menu/menu';
+import { CustomTextComponent } from '../components/custom-text/custom-text';
+
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    MenuComponent,
+    CustomTextComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,7 +24,9 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    MenuComponent,
+    CustomTextComponent,
   ],
   providers: [
     StatusBar,
