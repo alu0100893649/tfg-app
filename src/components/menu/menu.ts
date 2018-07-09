@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { CustomTextComponent } from '../../components/custom-text/custom-text';
+import { PrincipalMenuComponent } from '../../components/principal-menu/principal-menu';
+import { CampaignSelectorComponent } from '../../components/campaign-selector/campaign-selector';
+
 /**
  * Generated class for the MenuComponent component.
  *
@@ -11,13 +14,12 @@ import { CustomTextComponent } from '../../components/custom-text/custom-text';
   templateUrl: 'menu.html'
 })
 export class MenuComponent {
-	title: string = 'My Default Title';
-	note: string = "My Default Text";
-  	text: string;
+	title: string
+	note: string
+	component:any
 
   	constructor() {
-    	console.log('Hello MenuComponent Component');
-    	this.text = 'Hello World';
+    	
   	}
 
 }

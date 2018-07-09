@@ -15,8 +15,11 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-ion-content {
-	background-image: url('../assets/imgs/background-landscape.jpg');
-	background-size: cover;
-	background-position: center center;
+
+.newCampaignCss .modal-wrapper{
+    min-height: 300px;
+    height: auto;
+    .scroll-content{
+    	overflow:hidden;
+    }
 }

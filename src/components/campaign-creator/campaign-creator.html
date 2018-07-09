@@ -1,0 +1,43 @@
+<ion-content padding>
+	<ion-grid>
+		<ion-row>
+			<ion-col col-11><h1>Campaign Creator</h1></ion-col>
+			<ion-col col-1>
+				<button ion-button no-padding color="dark-green" full icon-only (click)="dismiss()">
+    				<ion-icon name="close"></ion-icon>
+  				</button>
+  			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col col-3><ion-label>Name</ion-label></ion-col>
+			<ion-col><ion-input [value]="name" [(ngModel)]="name" placeholder="Identifying name of the campaign"></ion-input></ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col col-3><ion-label>Description</ion-label></ion-col>
+			<ion-col><ion-input [value]="desc" [(ngModel)]="desc" placeholder="One-line description of the campaign"></ion-input></ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col col-3><ion-label>Image reference</ion-label></ion-col>
+			<ion-col col-7>
+				<ion-input [value]="imgRef.name" [(ngModel)]="imgRef.name"  readonly=true placeholder="Google Drive Image Reference"></ion-input>
+			</ion-col>
+			<ion-col col-1>
+				<button ion-button color="dark-green" full icon-only (click)="openPicker()">
+    				<ion-icon [name]="icon"></ion-icon>
+  				</button>
+  			</ion-col>
+  			<ion-col col-1>
+				<button ion-button color="dark-green" full icon-only (click)="cleanImgRef()">
+    				<ion-icon name="undo"></ion-icon>
+  				</button>
+  			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<button full ion-button color="dark-green" icon-start (click)="createCampaign()">
+	    			<ion-icon name="create"></ion-icon> Create Campaign
+	  			</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

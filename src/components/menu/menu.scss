@@ -1,13 +1,24 @@
 menu {
+
 	width: 100%;
 	height:100vh;
 	padding:0px;
 	margin:0px;
+
+	.with-landscape {
+		background-image: url('../assets/imgs/background-landscape.jpg');
+		background-size: cover;
+		background-position: center center;
+	}
 
 	ion-grid {
         height: 100%;
         ion-row {
             height: 100%;
         }
+    }
+
+    .scroll-content{
+    	overflow:hidden;
     }
 }

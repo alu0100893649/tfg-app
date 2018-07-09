@@ -1,11 +1,11 @@
-<ion-content class="with-bg">
+<ion-content class="with-landscape">
 	<ion-grid>
 	  	<ion-row>
 	  		<ion-col col-6>
-	  			<custom-text [title]="title" [content]="note"></custom-text>
+	  			<custom-text></custom-text>
 	  		</ion-col>
 	  		<ion-col col-6>
-	  			<!-- AQUÍ VA UN DYNAMIC COMPONENT PARA CAMBIAR ENTRE MENÚ PRINCIPAL Y SELECTOR DE CAMPAÑA -->
+	  			<ndc-dynamic [ndcDynamicComponent]="component"></ndc-dynamic>
 	  		</ion-col>
 	  	</ion-row>
 	</ion-grid>
