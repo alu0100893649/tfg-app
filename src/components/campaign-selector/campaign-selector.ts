@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ModalService } from '../../services/modal-data-pass.service'
 
 /**
  * Generated class for the CampaignSelectorComponent component.
@@ -12,16 +13,17 @@ import { Component } from '@angular/core';
 })
 export class CampaignSelectorComponent {
 
-  text: string;
+  	constructor(private modalService:ModalService) {
+    	
+  	}
 
-  constructor() {
-    console.log('Hello CampaignSelectorComponent Component');
-    this.text = 'Hello World';
-  }
+  	onBackClicked(){
+		this.modalService.viewChanged.emit(0)
+	}
+
   /*
   Falta:
   	- View
-  	- Función para volver a menú principal cambiando el texto de la derecha
   */
 
 }

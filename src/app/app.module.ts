@@ -19,6 +19,7 @@ import { MenuComponent } from '../components/menu/menu';
 import { CustomTextComponent } from '../components/custom-text/custom-text';
 import { PrincipalMenuComponent } from '../components/principal-menu/principal-menu';
 import { CampaignCreatorComponent } from '../components/campaign-creator/campaign-creator';
+import { CampaignSelectorComponent } from '../components/campaign-selector/campaign-selector';
 import { DriveFilePickerComponent } from '../components/drive-file-picker/drive-file-picker';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -51,6 +52,7 @@ let gapiClientConfig: NgGapiClientConfig = {
     CustomTextComponent,
     PrincipalMenuComponent,
     CampaignCreatorComponent,
+    CampaignSelectorComponent,
     DriveFilePickerComponent,
   ],
   imports: [
@@ -72,6 +74,7 @@ let gapiClientConfig: NgGapiClientConfig = {
     CustomTextComponent,
     PrincipalMenuComponent,
     CampaignCreatorComponent,
+    CampaignSelectorComponent,
     DriveFilePickerComponent,
   ],
   providers: [

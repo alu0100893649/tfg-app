@@ -6,13 +6,19 @@
 			</button>
 		</ion-item>
 	  	<ion-item no-lines text-left>
-			<button padding color=dark-green ion-button full large icon-start [disabled]="true"><ion-icon name="map"></ion-icon> Select Campaign</button>
+			<button padding color=dark-green ion-button full large icon-start (click)="onCampaignSelectorClicked()">
+				<ion-icon name="map"></ion-icon> Select Campaign
+			</button>
 		</ion-item>
 		<ion-item no-lines text-left>
-			<button padding color=dark-green ion-button full large icon-start><ion-icon name="build"></ion-icon> Preferences</button>
+			<button padding color=dark-green ion-button full large icon-start>
+				<ion-icon name="build"></ion-icon> Preferences
+			</button>
 		</ion-item>
 		<ion-item no-lines text-left>
-			<button padding color=dark-green ion-button full large icon-start [disabled]="true"><ion-icon name="information-circle"></ion-icon> Help</button>
+			<button padding color=dark-green ion-button full large icon-start [disabled]="true">
+				<ion-icon name="information-circle"></ion-icon> Help
+			</button>
 		</ion-item>
 	</ion-list>
 </ion-content>

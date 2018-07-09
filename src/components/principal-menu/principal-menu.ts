@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ModalService } from '../../services/modal-data-pass.service'
 import { ModalController, ModalOptions, Modal } from 'ionic-angular';
 import { CampaignCreatorComponent } from '../../components/campaign-creator/campaign-creator';
 
@@ -14,7 +15,7 @@ import { CampaignCreatorComponent } from '../../components/campaign-creator/camp
 })
 export class PrincipalMenuComponent {
 
-	constructor(private modalCtrl:ModalController) {
+	constructor(private modalCtrl:ModalController, private modalService:ModalService) {
 
 	}
 
@@ -32,9 +33,12 @@ export class PrincipalMenuComponent {
 
 	    modal.present();
 	}
+
+	onCampaignSelectorClicked(){
+		this.modalService.viewChanged.emit(1)
+	}
 	/*
   	Falta:
-  		- Función para ir a campaign-selector cambiando el texto de la derecha
   		- Función para lanzar preferences
   	*/
 }
