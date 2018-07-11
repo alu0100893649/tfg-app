@@ -1,5 +1,20 @@
-<!-- Generated template for the CampaignSelectorComponent component -->
-<button ion-button (click)="onBackClicked(0)">BACK</button>
-<div>
-  CAMPAIGN-SELECTOR
-</div>
+<ion-content>
+	<ion-list>
+		<ion-item no-lines text-left>
+			<ion-slides>
+		  		<ion-slide *ngFor="let key of keys">
+		  			<img src="{{getThumbnail(key)}}">
+		  			<ion-label>{{key}}</ion-label>
+		  			<ion-label>{{campaigns[key].desc}}</ion-label>
+		  			<button ion-button color=dark-green>Enter Campaign</button>
+					<button ion-button color="danger"><ion-icon name="trash"></ion-icon></button>
+		  		</ion-slide>
+		  	</ion-slides>
+		</ion-item>
+		<ion-item no-lines text-center>
+			<button ion-button (click)="onBackClicked(0)" large color=dark-green>
+				Go Back To Principal Menu
+			</button>
+		</ion-item>
+	</ion-list>
+</ion-content>
