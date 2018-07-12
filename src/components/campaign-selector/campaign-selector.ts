@@ -15,9 +15,9 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'campaign-selector.html'
 })
 export class CampaignSelectorComponent {
-	@ViewChild(Slides) slides: Slides;
-	keys:string[]
-	campaigns:any
+  	@ViewChild(Slides) slides: Slides;
+  	keys:string[]
+  	campaigns:any
 
   	constructor(private storage: Storage, private modalService:ModalService) {
     	this.storage.get('campaigns').then((campaigns) => {
@@ -37,15 +37,19 @@ export class CampaignSelectorComponent {
 
   getThumbnail(key){
     if("id" in this.campaigns[key].imgRef){
-      return "https://docs.google.com/uc?export=download&id=1XCK4k0FVQh7ViBYkCoLjThmjST62Z0H7"
+      return "https://docs.google.com/uc?export=download&id=" + this.campaigns[key].imgRef['id']
     } else {
-      return "https://docs.google.com/uc?export=download&id=1XCK4k0FVQh7ViBYkCoLjThmjST62Z0H7"
+      return "assets\\imgs\\default_thumbnail.png"
     }
   }
 
-  /*
-  Falta:
-  	- mostrar imagen seguida del nombre -> get image from key, if key = "", key redirects to default image via getThumbnail
-  */
+  deleteCampaign(key){
+    delete this.campaigns[key];
+    let index = this.keys.indexOf(key);
+    if (index > -1) {
+      this.keys.splice(index, 1);
+    }
+    this.storage.set('campaigns', this.campaigns)
+  }
 
 }

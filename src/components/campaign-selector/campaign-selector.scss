@@ -14,12 +14,14 @@ campaign-selector {
 	.item{
   		margin:5% auto;
 	}
-    .scroll-content{
-	    justify-content: center;
-		display: flex !important;
-	 	align-items: center !important;
-	 	width: 100% !important;
-  		height: 100% !important;
-  		overflow:hidden;
+
+    .chart-with-bg {
+    	width:auto !important;
+	    background-color: rgb(0, 0, 0) !important;
+        background-color: rgba(0, 0, 0, 0.7) !important;
+        
+        border: 5px solid black;
+        border-radius: 5px;
+        color: white;
 	}
 }
