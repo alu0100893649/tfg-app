@@ -21,13 +21,18 @@ export class CampaignSelectorComponent {
 
   	constructor(private storage: Storage, private modalService:ModalService) {
     	this.storage.get('campaigns').then((campaigns) => {
-    		this.setCampaigns(campaigns)
+        if(campaigns == null){
+          this.campaigns = {}
+          this.keys = []
+        } else {
+          this.setCampaigns(campaigns)
+        }
     	})
   	}
 
   	onBackClicked(){
-		this.modalService.viewChanged.emit(0)
-	}
+		    this.modalService.viewChanged.emit(0)
+	  }
 
 	setCampaigns(campaigns){
 		console.log(campaigns)
@@ -50,6 +55,10 @@ export class CampaignSelectorComponent {
       this.keys.splice(index, 1);
     }
     this.storage.set('campaigns', this.campaigns)
+  }
+
+  goToCampaign(key){
+    
   }
 
 }
