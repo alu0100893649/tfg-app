@@ -22,6 +22,7 @@ import { PrincipalMenuComponent } from '../components/principal-menu/principal-m
 import { CampaignCreatorComponent } from '../components/campaign-creator/campaign-creator';
 import { CampaignSelectorComponent } from '../components/campaign-selector/campaign-selector';
 import { DriveFilePickerComponent } from '../components/drive-file-picker/drive-file-picker';
+import { AccordionComponent } from '../components/accordion/accordion';
 
 import { PreferencesComponent } from '../components/preferences/preferences';
 import { PickerComponent } from '../components/picker/picker';
@@ -60,7 +61,8 @@ let gapiClientConfig: NgGapiClientConfig = {
     CampaignSelectorComponent,
     DriveFilePickerComponent,
     PreferencesComponent,
-    PickerComponent
+    PickerComponent,
+    AccordionComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +87,8 @@ let gapiClientConfig: NgGapiClientConfig = {
     CampaignSelectorComponent,
     DriveFilePickerComponent,
     PreferencesComponent,
-    PickerComponent
+    PickerComponent,
+    AccordionComponent
   ],
   providers: [
     StatusBar,

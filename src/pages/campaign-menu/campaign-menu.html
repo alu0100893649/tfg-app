@@ -19,5 +19,9 @@
 
 
 <ion-content padding>
-	{{this.campaign}}
+	<ion-scroll class="side-menu" scrollY="true">
+    <accordion *ngFor="let folder of folders" [title]="folder.name">
+      {{folder.info}}
+    </accordion>
+  </ion-scroll>
 </ion-content>

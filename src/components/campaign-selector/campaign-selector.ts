@@ -59,7 +59,8 @@ export class CampaignSelectorComponent {
 
     goToCampaign(key){
         this.navCtrl.push(CampaignMenuPage, {
-            campaign: this.campaigns[key]
+            campaign: this.campaigns[key],
+            name: key
         });
     }
 
