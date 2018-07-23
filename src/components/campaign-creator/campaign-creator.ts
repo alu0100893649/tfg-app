@@ -73,12 +73,22 @@ export class CampaignCreatorComponent implements OnInit {
                         this.cleanImgRef()
                     })
                 }
+                this.presentCreationMade(this.name)
             });
         }
     }
 
     dismiss(){
     	this.viewCtrl.dismiss();
+    }
+
+    presentCreationMade(campaignName){
+        let alert = this.alertCtrl.create({
+            title: 'Campaign made',
+            subTitle: campaignName + ' has been made. Now you can enter in it through the Campaign Selector',
+            buttons: ['Dismiss']
+        });
+        alert.present();
     }
 
     presentAlert() {

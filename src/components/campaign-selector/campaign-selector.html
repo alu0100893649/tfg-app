@@ -8,7 +8,7 @@
 		  				<ion-label>{{key}}</ion-label>
 			  			<ion-label>{{campaigns[key].desc}}</ion-label>
 			  		</div>
-		  			<button ion-button large color=dark-green (click)="goToCampaign()">Enter Campaign</button>
+		  			<button ion-button large color=dark-green (click)="goToCampaign(key)">Enter Campaign</button>
 					<button ion-button large color="danger" (click)="deleteCampaign(key)"><ion-icon name="trash"></ion-icon></button>
 		  		</ion-slide>
 		  	</ion-slides>

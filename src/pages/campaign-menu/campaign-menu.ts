@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, ModalController, NavParams } from 'ionic-angular';
+import { PreferencesComponent } from '../../components/preferences/preferences';
 /**
  * Generated class for the CampaignMenuPage page.
  *
@@ -8,18 +8,41 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
-  selector: 'page-campaign-menu',
-  templateUrl: 'campaign-menu.html',
+	selector: 'page-campaign-menu',
+	templateUrl: 'campaign-menu.html',
 })
 export class CampaignMenuPage {
+	campaign:any
+	roster:any
+	showedComponents:any
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
+		this.campaign = navParams.get('campaign');
+		if(this.campaign.preferences === undefined){
+			this.campaign.preferences = {
+				'ambience':'',
+				'modules':'',
+				'gallery':'',
+				'roster':'',
+				'chars':'',
+				'legends':'',
+				'generators':''
+			}
+		}
+		console.log(this.campaign)
+	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CampaignMenuPage');
-  }
+	openPreferences(){
+		let preferencesModal = this.modalCtrl.create(PreferencesComponent, { 'prefs': this.campaign.preferences } , {enableBackdropDismiss: false});
+        preferencesModal.onDidDismiss(data => {
+            this.campaign.preferences = data.folders_dict
+        });
+        preferencesModal.present();
+	}
+
+	ionViewDidLoad() {
+	    console.log('ionViewDidLoad CampaignMenuPage');
+	}
 
 }

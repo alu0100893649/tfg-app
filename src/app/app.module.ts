@@ -14,6 +14,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { CampaignMenuPage } from '../pages/campaign-menu/campaign-menu';
 
 import { MenuComponent } from '../components/menu/menu';
 import { CustomTextComponent } from '../components/custom-text/custom-text';
@@ -21,6 +22,9 @@ import { PrincipalMenuComponent } from '../components/principal-menu/principal-m
 import { CampaignCreatorComponent } from '../components/campaign-creator/campaign-creator';
 import { CampaignSelectorComponent } from '../components/campaign-selector/campaign-selector';
 import { DriveFilePickerComponent } from '../components/drive-file-picker/drive-file-picker';
+
+import { PreferencesComponent } from '../components/preferences/preferences';
+import { PickerComponent } from '../components/picker/picker';
 
 import { HttpClientModule } from '@angular/common/http';
 import {
@@ -48,12 +52,15 @@ let gapiClientConfig: NgGapiClientConfig = {
   declarations: [
     MyApp,
     HomePage,
+    CampaignMenuPage,
     MenuComponent,
     CustomTextComponent,
     PrincipalMenuComponent,
     CampaignCreatorComponent,
     CampaignSelectorComponent,
     DriveFilePickerComponent,
+    PreferencesComponent,
+    PickerComponent
   ],
   imports: [
     BrowserModule,
@@ -70,12 +77,15 @@ let gapiClientConfig: NgGapiClientConfig = {
   entryComponents: [
     MyApp,
     HomePage,
+    CampaignMenuPage,
     MenuComponent,
     CustomTextComponent,
     PrincipalMenuComponent,
     CampaignCreatorComponent,
     CampaignSelectorComponent,
     DriveFilePickerComponent,
+    PreferencesComponent,
+    PickerComponent
   ],
   providers: [
     StatusBar,

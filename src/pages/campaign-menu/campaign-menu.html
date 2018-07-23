@@ -8,11 +8,16 @@
 
   <ion-navbar>
     <ion-title>campaign-menu</ion-title>
+     <ion-buttons end>
+	    <button ion-button icon-only (click)="openPreferences()">
+	        <ion-icon name="build"></ion-icon>
+	    </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+	{{this.campaign}}
 </ion-content>
