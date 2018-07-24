@@ -35,12 +35,12 @@ export class CampaignMenuPage {
 				'generators':{}
 			}
 		}
-		for(let key in this.campaign.preferences){
+		for(var key in this.campaign.preferences){
 			if(this.campaign.preferences[key]){
-				this.folders[key] = this.campaign.preferences[key]
-				this.folders[key]['actual'] = this.campaign.preferences[key]['id']
+				this.folders.push({'name':key, 'actual': this.campaign.preferences[key]['id'], 'info':this.campaign.preferences[key]})
 			}
 		}
+		console.log(this.folders)
 	}
 
 	openPreferences(){

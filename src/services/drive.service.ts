@@ -10,21 +10,11 @@ export class DriveService {
     private readonly QFOLDERITEMS: string = "+and+mimeType+contains+\'folder\'"
     private readonly QIMAGEITEMS: string = "+and+(mimeType+%3D+\'image%2Fjpeg\'+or+mimeType+%3D+\'image%2Fpng\')"
     private readonly QINPARENTS: string = "+in+parents"
-    private readonly QLISTFIELDS: string = "&fields=files(id%2Ckind%2CmimeType%2Cname%2Cparents)"
-    private readonly QGETFIELDS: string = "?fields=id%2Ckind%2CmimeType%2Cname%2Cparents"
+    private readonly QLISTFIELDS: string = "&fields=files(id%2Ckind%2CmimeType%2Cname%2Cparents%2CwebContentLink%2CwebViewLink)"
+    private readonly QGETFIELDS: string = "?fields=id%2Ckind%2CmimeType%2Cname%2Cparents%2CwebContentLink%2CwebViewLink"
 
-    private readonly QTESTPARAMS: string = "+and+name+contains+'Latis'"
-    
     constructor(private httpClient: HttpClient) {
     
-    }
-
-    public listOfFiles(authtoken: string): Observable<any> {
-        return this.httpClient.get(this.API_URL + "/files" + this.QNOTRASHEDROOT + this.QTESTPARAMS, {
-          headers: new HttpHeaders({
-                Authorization: `Bearer ${authtoken}`
-            })
-        });
     }
 
     public getFolderChildren(parentFolder:string, authtoken: string): Observable<any> {
