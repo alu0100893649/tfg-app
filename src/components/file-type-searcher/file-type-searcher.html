@@ -1,0 +1,29 @@
+<ion-header>
+	<ion-navbar>
+		<ion-grid>
+			<ion-row>
+				<button style='background: transparent;' no-lines button-left *ngIf="!inRoot" (click)="onPrevFolderClicked()">
+					<ion-icon style='font-size: 200%' name="arrow-back"></ion-icon>
+				</button>
+	    		<ion-title col-11>{{actual_folder.name}}</ion-title>
+			</ion-row>
+		</ion-grid>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<ion-list >
+		<ion-item-divider color=dark-green>
+  			Folders
+		</ion-item-divider>
+		<ion-item no-lines *ngFor="let item of folders;">
+			<button ion-item no-lines (click)="onFolderClicked(item)">{{item.name}}</button>
+		</ion-item>
+		<ion-item-divider color=dark-green>
+  			Files
+		</ion-item-divider>
+		<ion-item no-lines *ngFor="let item of images;">
+			<ion-label>{{item.name}}</ion-label>
+			<button ion-button item-right color=dark-green (click)="selectFile(item)"><ion-icon name="checkmark"></ion-icon></button>
+		</ion-item>
+	</ion-list>
+</ion-content>

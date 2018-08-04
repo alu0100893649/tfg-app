@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, ModalController, AlertController, NavParams } from 'ionic-angular';
 import { PreferencesComponent } from '../../components/preferences/preferences';
 import { Storage } from '@ionic/storage';
-
+import { GridsterModule, GridsterConfig, GridsterItem, DisplayGrid } from 'angular-gridster2';
 /**
  * Generated class for the CampaignMenuPage page.
  *
@@ -14,12 +14,16 @@ import { Storage } from '@ionic/storage';
 	selector: 'page-campaign-menu',
 	templateUrl: 'campaign-menu.html',
 })
-export class CampaignMenuPage {
+export class CampaignMenuPage implements OnInit {
+	options: GridsterConfig;
+   	dashboard: Array<GridsterItem>;
+
 	campaign:any
 	campaignName:string
+
 	combatants:any // roster + monster selected
 	showedComponents:any // components in showerMenu
-	folders:any = [{'name':'search','info':'INFO IN SEARCH COMPONENT'}]
+
 	constructor(private storage: Storage, private alertCtrl: AlertController,
 				public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
 		this.campaign = navParams.get('campaign');
@@ -29,18 +33,32 @@ export class CampaignMenuPage {
 				'ambience':{},
 				'modules':{},
 				'gallery':{},
-				'roster':{},
-				'chars':{},
+				//'roster':{},
+				//'chars':{},
 				'legends':{},
-				'generators':{}
+				//'generators':{}
 			}
 		}
-		for(var key in this.campaign.preferences){
-			if(this.campaign.preferences[key]){
-				this.folders.push({'name':key, 'actual': this.campaign.preferences[key]['id'], 'info':this.campaign.preferences[key]})
-			}
-		}
-		console.log(this.folders)
+	}
+
+	ngOnInit(){
+		this.options = {
+			gridType: 'fit',
+			margin: 5,
+			displayGrid: DisplayGrid.None,
+			outerMargin: false,
+			draggable: {
+			  enabled: false
+			},
+			resizable: {
+			  enabled: false
+			},
+		};
+		this.dashboard = [
+			{x: 0, y: 0, rows: 69, cols: 25},
+			{x: 0, y: 0, rows: 70, cols: 75},
+			{x: 0, y: 0, rows: 30, cols: 100}
+		];
 	}
 
 	openPreferences(){

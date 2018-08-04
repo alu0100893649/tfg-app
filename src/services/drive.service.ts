@@ -8,10 +8,15 @@ export class DriveService {
     /*Con esto se pueden especificar las búsquedas. name+contains+NOMBRE DE LO QUE BUSQUE*/
     private readonly QNOTRASHEDROOT: string = "?q=trashed%3Dfalse"
     private readonly QFOLDERITEMS: string = "+and+mimeType+contains+\'folder\'"
-    private readonly QIMAGEITEMS: string = "+and+(mimeType+%3D+\'image%2Fjpeg\'+or+mimeType+%3D+\'image%2Fpng\')"
     private readonly QINPARENTS: string = "+in+parents"
     private readonly QLISTFIELDS: string = "&fields=files(id%2Ckind%2CmimeType%2Cname%2Cparents%2CwebContentLink%2CwebViewLink)"
     private readonly QGETFIELDS: string = "?fields=id%2Ckind%2CmimeType%2Cname%2Cparents%2CwebContentLink%2CwebViewLink"
+
+    //FALTA PONER LOS TIPOS DE AUDIO, PDF Y DOCS PARA SACARLOS
+    private readonly QIMAGEITEMS: string = "+and+(mimeType+%3D+\'image%2Fjpeg\'+or+mimeType+%3D+\'image%2Fpng\')"
+    private readonly QAUDIOITEMS: string = "+and+(mimeType+%3D+\'image%2Fjpeg\'+or+mimeType+%3D+\'image%2Fpng\')"
+    private readonly QMODULITEMS: string = "+and+(mimeType+%3D+\'image%2Fjpeg\'+or+mimeType+%3D+\'image%2Fpng\')"
+    private readonly LEGENDITEMS: string = "+and+(mimeType+%3D+\'image%2Fjpeg\'+or+mimeType+%3D+\'image%2Fpng\')"
 
     constructor(private httpClient: HttpClient) {
     
@@ -47,6 +52,28 @@ export class DriveService {
                 Authorization: `Bearer ${authtoken}`
             })
         });
+    }
+
+    public getFolderFilesByType(folder_id:string, type:string, authtoken:string){
+        let FILETYPE:string = this.getTypeByName(type)
+        return this.httpClient.get(this.API_URL + "/files" + this.QNOTRASHEDROOT + FILETYPE + "+and+\'" + folder_id + "\'" + this.QINPARENTS + "+" + this.QLISTFIELDS, {
+            headers: new HttpHeaders({
+                Authorization: `Bearer ${authtoken}`
+            })
+        });   
+    }
+
+    private getTypeByName(type:string){
+        if(type == 'legends'){
+            return this.LEGENDITEMS
+        } else if(type == 'modules'){
+            return this.QMODULITEMS
+        } else if(type == 'music'){
+            return this.QAUDIOITEMS
+        } else if(type == 'images'){
+            return this.QIMAGEITEMS
+        }
+        return ''
     }
 
 }

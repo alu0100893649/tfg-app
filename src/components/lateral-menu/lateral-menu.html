@@ -1,0 +1,9 @@
+<ion-scroll class="side-menu" scrollY="true">
+    <accordion *ngFor="let folder of folders" [title]="folder.name">
+		{{folder.name}} <br>
+		{{folder.actual}} <br>
+		{{folder.info.name}} <br>
+		{{folder.info.id}} <br>
+		{{folder.info.kind}} <br>
+    </accordion>
+</ion-scroll>

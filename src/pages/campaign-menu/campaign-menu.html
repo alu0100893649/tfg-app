@@ -6,26 +6,28 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>campaign-menu</ion-title>
-     <ion-buttons end>
-	    <button ion-button icon-only (click)="openPreferences()">
-	        <ion-icon name="build"></ion-icon>
-	    </button>
-    </ion-buttons>
-  </ion-navbar>
+<ion-navbar>
+	<ion-title>campaign-menu</ion-title>
+	<ion-buttons end>
+		<button ion-button icon-only (click)="openPreferences()">
+			<ion-icon name="build"></ion-icon>
+		</button>
+	</ion-buttons>
+</ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<ion-scroll class="side-menu" scrollY="true">
-    <accordion *ngFor="let folder of folders" [title]="folder.name">
-      {{folder.name}} <br>
-      {{folder.actual}} <br>
-      {{folder.info.name}} <br>
-      {{folder.info.id}} <br>
-      {{folder.info.kind}} <br>
-    </accordion>
-  </ion-scroll>
+	<gridster [options]="options">
+		<gridster-item [item]="dashboard[0]">
+			<lateral-menu [campaign]="campaign"></lateral-menu>
+		</gridster-item>
+		<gridster-item [item]="dashboard[1]">
+			<central-menu></central-menu>
+		</gridster-item>
+		<gridster-item [item]="dashboard[2]">
+			<foot-menu></foot-menu>
+		</gridster-item>
+	</gridster>
 </ion-content>

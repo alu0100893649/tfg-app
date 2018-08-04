@@ -16,49 +16,49 @@
 				<ion-label color="primary" stacked>Characters Folder</ion-label>
 				<ion-input [(ngModel)]="folders_dict['chars'].name" id="chars" readonly=true placeholder="Select a folder... "></ion-input>	
 			</ion-item>
-			<button ion-button (click)="presentPickerModal('chars')"><ion-icon name="folder"></ion-icon></button>
+			<button ion-button (click)="presentPickerModal('chars')"><ion-icon [name]="icon"></ion-icon></button>
 		</ion-row>
 		<ion-row>
 			<ion-item no-lines col-9 push-1>
 				<ion-label color="primary" stacked>Legends Folder</ion-label>
 				<ion-input [(ngModel)]="folders_dict['legends'].name" id="legends" readonly=true placeholder="Select a folder... "></ion-input>	
 			</ion-item>
-			<button ion-button (click)="presentPickerModal('legends')"><ion-icon name="folder"></ion-icon></button>
+			<button ion-button (click)="presentPickerModal('legends')"><ion-icon [name]="icon"></ion-icon></button>
 		</ion-row>
 		<ion-row>
 			<ion-item no-lines col-9 push-1>
 				<ion-label color="primary" stacked>Ambience Music Folder</ion-label>
 				<ion-input [(ngModel)]="folders_dict['ambience'].name" id="ambience" readonly=true placeholder="Select a folder... "></ion-input>	
 			</ion-item>
-			<button ion-button (click)="presentPickerModal('ambience')"><ion-icon name="folder"></ion-icon></button>
+			<button ion-button (click)="presentPickerModal('ambience')"><ion-icon [name]="icon"></ion-icon></button>
 		</ion-row>
 		<ion-row>
 			<ion-item no-lines col-9 push-1>
 				<ion-label color="primary" stacked>Modules Folder</ion-label>
 				<ion-input [(ngModel)]="folders_dict['modules'].name" id="modules" readonly=true placeholder="Select a folder... "></ion-input>	
 			</ion-item>
-			<button ion-button (click)="presentPickerModal('modules')"><ion-icon name="folder"></ion-icon></button>
+			<button ion-button (click)="presentPickerModal('modules')"><ion-icon [name]="icon"></ion-icon></button>
 		</ion-row>
 		<ion-row>
 			<ion-item no-lines col-9 push-1>
 				<ion-label color="primary" stacked>Gallery Folder</ion-label>
 				<ion-input [(ngModel)]="folders_dict['gallery'].name" id="gallery" readonly=true placeholder="Select a folder... "></ion-input>	
 			</ion-item>
-			<button ion-button (click)="presentPickerModal('gallery')"><ion-icon name="folder"></ion-icon></button>
+			<button ion-button (click)="presentPickerModal('gallery')"><ion-icon [name]="icon"></ion-icon></button>
 		</ion-row>
 		<ion-row>
 			<ion-item no-lines col-9 push-1>
 				<ion-label color="primary" stacked>Roster Folder</ion-label>
 				<ion-input [(ngModel)]="folders_dict['roster'].name" id="roster" readonly=true placeholder="Select a folder... "></ion-input>	
 			</ion-item>
-			<button ion-button (click)="presentPickerModal('roster')"><ion-icon name="folder"></ion-icon></button>
+			<button ion-button (click)="presentPickerModal('roster')"><ion-icon [name]="icon"></ion-icon></button>
 		</ion-row>
 		<ion-row>
 			<ion-item no-lines col-9 push-1>
 				<ion-label color="primary" stacked>Generators Folder</ion-label>
 				<ion-input [(ngModel)]="folders_dict['generators'].name" id="generators" readonly=true placeholder="Select a folder... "></ion-input>	
 			</ion-item>
-			<button ion-button (click)="presentPickerModal('generators')"><ion-icon name="folder"></ion-icon></button>
+			<button ion-button (click)="presentPickerModal('generators')"><ion-icon [name]="icon"></ion-icon></button>
 		</ion-row>
 	</ion-grid>
 </ion-content>

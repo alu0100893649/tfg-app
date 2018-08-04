@@ -33,7 +33,7 @@ export class DriveFilePickerComponent {
 
     ionViewCanEnter(): boolean{
    		if(this.userService.isUserSignedIn()){
-   			this.driveResource.getRootId(this.userService.getToken()).subscribe(res => this.setRoot(res));
+   			  this.driveResource.getRootId(this.userService.getToken()).subscribe(res => this.setRoot(res));
       		return true;
     	} else {
       		return false;
@@ -57,8 +57,6 @@ export class DriveFilePickerComponent {
     setRoot(response){
     	this.rootId = response.id
     	this.rootName = response.name
-    	console.log(this.rootId)
-    	console.log(this.rootName)
     	this.setActualFolder({id: this.rootId, name: this.rootName});
     	this.getFolderChildren(this.actual_folder.id, this.userService.getToken());
     }

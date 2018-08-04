@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular'; 
 import { GoogleApiService } from 'ng-gapi';
 import { UserService } from '../../services/drive-user.service';
 import { DriveService } from '../../services/drive.service';
-
-import { ModalService } from '../../services/modal-data-pass.service'
+import { ModalService } from '../../services/modal-data-pass.service';
 /**
  * Generated class for the PickerComponent component.
  *
@@ -25,9 +24,17 @@ export class PickerComponent {
         if(!this.userService.isUserSignedIn()){
             this.userService.signIn()
         }
-      	this.getFolderChildren('root', this.userService.getToken());
-        this.actual_folder = {name: 'Mi Unidad', id:'root'};
   	}
+
+    ionViewCanEnter(): boolean{
+       if(this.userService.isUserSignedIn()){
+          this.getFolderChildren('root', this.userService.getToken());
+          this.actual_folder = {name: 'Mi Unidad', id:'root'};
+          return true;
+      } else {
+          return false;
+      }
+    }
 
   	getFolderChildren(folder, token){
         this.driveResource.getFolderChildren(folder, token).subscribe( res => this.setFolders(res));

@@ -9,6 +9,7 @@ import { DriveService } from '../services/drive.service';
 import { ModalService } from '../services/modal-data-pass.service'
 
 import { DynamicModule } from 'ng-dynamic-component';
+import { GridsterModule } from 'angular-gridster2';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -23,6 +24,9 @@ import { CampaignCreatorComponent } from '../components/campaign-creator/campaig
 import { CampaignSelectorComponent } from '../components/campaign-selector/campaign-selector';
 import { DriveFilePickerComponent } from '../components/drive-file-picker/drive-file-picker';
 import { AccordionComponent } from '../components/accordion/accordion';
+import { LateralMenuComponent } from '../components/lateral-menu/lateral-menu';
+import { CentralMenuComponent } from '../components/central-menu/central-menu';
+import { FootMenuComponent } from '../components/foot-menu/foot-menu';
 
 import { PreferencesComponent } from '../components/preferences/preferences';
 import { PickerComponent } from '../components/picker/picker';
@@ -62,13 +66,17 @@ let gapiClientConfig: NgGapiClientConfig = {
     DriveFilePickerComponent,
     PreferencesComponent,
     PickerComponent,
-    AccordionComponent
+    AccordionComponent,
+    LateralMenuComponent,
+    CentralMenuComponent,
+    FootMenuComponent,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     DynamicModule.withComponents([PrincipalMenuComponent]),
+    GridsterModule,
     HttpClientModule,
     GoogleApiModule.forRoot({
       provide: NG_GAPI_CONFIG,
@@ -88,7 +96,10 @@ let gapiClientConfig: NgGapiClientConfig = {
     DriveFilePickerComponent,
     PreferencesComponent,
     PickerComponent,
-    AccordionComponent
+    AccordionComponent,
+    LateralMenuComponent,
+    CentralMenuComponent,
+    FootMenuComponent,
   ],
   providers: [
     StatusBar,

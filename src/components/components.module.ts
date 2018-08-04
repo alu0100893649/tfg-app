@@ -5,19 +5,31 @@ import { PrincipalMenuComponent } from './principal-menu/principal-menu';
 import { CampaignCreatorComponent } from './campaign-creator/campaign-creator';
 import { DriveFilePickerComponent } from './drive-file-picker/drive-file-picker';
 import { CampaignSelectorComponent } from './campaign-selector/campaign-selector';
+import { LateralMenuComponent } from './lateral-menu/lateral-menu';
+import { CentralMenuComponent } from './central-menu/central-menu';
+import { FootMenuComponent } from './foot-menu/foot-menu';
+import { FileTypeSearcherComponent } from './file-type-searcher/file-type-searcher';
 @NgModule({
 	declarations: [MenuComponent,
     CustomTextComponent,
     PrincipalMenuComponent,
     CampaignCreatorComponent,
     DriveFilePickerComponent,
-    CampaignSelectorComponent],
+    CampaignSelectorComponent,
+    LateralMenuComponent,
+    CentralMenuComponent,
+    FootMenuComponent,
+    FileTypeSearcherComponent],
 	imports: [],
 	exports: [MenuComponent,
     CustomTextComponent,
     PrincipalMenuComponent,
     CampaignCreatorComponent,
     DriveFilePickerComponent,
-    CampaignSelectorComponent]
+    CampaignSelectorComponent,
+    LateralMenuComponent,
+    CentralMenuComponent,
+    FootMenuComponent,
+    FileTypeSearcherComponent]
 })
 export class ComponentsModule {}

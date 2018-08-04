@@ -1,14 +1,17 @@
 page-campaign-menu {
-	.side-menu{
+	ion-grid {
+        height: 100%;
+        ion-row {
+            height: 100%;
+        }
+    }
+
+    .side-menu{
         width:100%;
         height:100%;
     }
-    .detail-zone .scroll-content{
-		background-color: coral;
-        overflow-y: hidden;
-    }
 
-	.accordion-list {
+    .accordion-list {
         background: color($colors, light);
         height: 100%;
     }
