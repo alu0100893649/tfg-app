@@ -1,8 +1,9 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { GoogleApiService } from 'ng-gapi';
 import { UserService } from '../../services/drive-user.service';
 import { DriveService } from '../../services/drive.service';
 import { ModalService } from '../../services/modal-data-pass.service';
+
 /**
  * Generated class for the FileTypeSearcherComponent component.
  *
@@ -10,26 +11,38 @@ import { ModalService } from '../../services/modal-data-pass.service';
  * Components.
  */
 @Component({
-  selector: 'file-type-searcher',
-  templateUrl: 'file-type-searcher.html'
+    selector: 'file-type-searcher',
+    templateUrl: 'file-type-searcher.html'
 })
 export class FileTypeSearcherComponent {
-	rootId:string = '';
-	rootName:string = '';
-	inRoot:boolean = true;
+  	inRoot:boolean = true;
 	
-	folders:any[] = [];
-	files:any[] = [];
+    folders:any[] = [];
+    files:any[] = [];
     actual_folder:any = {id:'', name:''};
+    
+    @Input("user") user:any;
+    @Input("type") fileType:string;
+    @Input("name") rootName:string;
+    @Input("id")   rootId:string;
 
-    @Input() type:string;
+   	constructor(private userService: UserService, private driveResource: DriveService,
+    				private gapiService: GoogleApiService, private modalService: ModalService) {
+    }
 
-	constructor(private userService: UserService, private driveResource: DriveService,
-  				private gapiService: GoogleApiService, private modalService: ModalService) {
-    	console.log('Hello FileTypeSearcherComponent Component');
-	}
+    ngOnInit(){
+      this.userService.setUser(this.user)  
+      if(!this.userService.isUserSignedIn()){
+        this.userService.signIn();
+        this.getFolderChildren(this.rootId, this.fileType, this.userService.getToken());
+        this.actual_folder = {name: this.rootName, id:this.rootId};
+      } else {
+        this.getFolderChildren(this.rootId, this.fileType, this.userService.getToken());
+        this.actual_folder = {name: this.rootName, id:this.rootId};
+      }
+    }
 
-	setActualFolder(response){
+  	setActualFolder(response){
       	this.actual_folder = response
       	if(this.actual_folder.id == this.rootId){
       		this.inRoot = true;
@@ -47,7 +60,7 @@ export class FileTypeSearcherComponent {
     	this.rootId = response.id
     	this.rootName = response.name
     	this.setActualFolder({id: this.rootId, name: this.rootName});
-    	this.getFolderChildren(this.actual_folder.id, this.type, this.userService.getToken());
+    	this.getFolderChildren(this.actual_folder.id, this.fileType, this.userService.getToken());
     }
 
     setFolders(response){
@@ -55,19 +68,20 @@ export class FileTypeSearcherComponent {
     }
 
     setFiles(response){
-    	this.files = response.files
+    	  this.files = response.files
+        console.log(response.files)
     }
 
     onFolderClicked(item){
         this.setActualFolder(item)
         this.driveResource.getFolderChildren(item.id, this.userService.getToken()).subscribe( res => this.setFolders(res));
-        this.driveResource.getFolderFilesByType(item.id, this.type, this.userService.getToken()).subscribe(res => this.setFiles(res));
+        this.driveResource.getFolderFilesByType(item.id, this.fileType, this.userService.getToken()).subscribe(res => this.setFiles(res));
     }
 
     onPrevFolderClicked(){
-		this.driveResource.getFolderById(this.actual_folder.parents[0], this.userService.getToken()).subscribe( res => this.setActualFolder(res))
-		this.driveResource.getFolderChildren(this.actual_folder.parents[0], this.userService.getToken()).subscribe( res => this.setFolders(res));
-		this.driveResource.getFolderFilesByType(this.actual_folder.parents[0], this.type, this.userService.getToken()).subscribe(res => this.setFiles(res));
+    		this.driveResource.getFolderById(this.actual_folder.parents[0], this.userService.getToken()).subscribe( res => this.setActualFolder(res))
+    		this.driveResource.getFolderChildren(this.actual_folder.parents[0], this.userService.getToken()).subscribe( res => this.setFolders(res));
+    		this.driveResource.getFolderFilesByType(this.actual_folder.parents[0], this.fileType, this.userService.getToken()).subscribe(res => this.setFiles(res));
     }
 
     selectFile(item){

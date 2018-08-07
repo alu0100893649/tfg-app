@@ -12,11 +12,10 @@ export class DriveService {
     private readonly QLISTFIELDS: string = "&fields=files(id%2Ckind%2CmimeType%2Cname%2Cparents%2CwebContentLink%2CwebViewLink)"
     private readonly QGETFIELDS: string = "?fields=id%2Ckind%2CmimeType%2Cname%2Cparents%2CwebContentLink%2CwebViewLink"
 
-    //FALTA PONER LOS TIPOS DE AUDIO, PDF Y DOCS PARA SACARLOS
     private readonly QIMAGEITEMS: string = "+and+(mimeType+%3D+\'image%2Fjpeg\'+or+mimeType+%3D+\'image%2Fpng\')"
-    private readonly QAUDIOITEMS: string = "+and+(mimeType+%3D+\'image%2Fjpeg\'+or+mimeType+%3D+\'image%2Fpng\')"
-    private readonly QMODULITEMS: string = "+and+(mimeType+%3D+\'image%2Fjpeg\'+or+mimeType+%3D+\'image%2Fpng\')"
-    private readonly LEGENDITEMS: string = "+and+(mimeType+%3D+\'image%2Fjpeg\'+or+mimeType+%3D+\'image%2Fpng\')"
+    private readonly QPARSEITEMS: string = "+and+(mimeType+%3D+\'text%2Fplain\'+or+mimeType+%3D+\'application%2Fvnd.google-apps.document\')"
+    private readonly QAUDIOITEMS: string = "+and+(mimeType+%3D+\'audio%2Fmpeg\'+or+mimeType+%3D+\'audio%2Fwav\')"
+    private readonly QMODULITEMS: string = "+and+(mimeType+%3D+\'application%2Fpdf\')"
 
     constructor(private httpClient: HttpClient) {
     
@@ -55,7 +54,7 @@ export class DriveService {
     }
 
     public getFolderFilesByType(folder_id:string, type:string, authtoken:string){
-        let FILETYPE:string = this.getTypeByName(type)
+        var FILETYPE:string = this.getTypeByName(type)
         return this.httpClient.get(this.API_URL + "/files" + this.QNOTRASHEDROOT + FILETYPE + "+and+\'" + folder_id + "\'" + this.QINPARENTS + "+" + this.QLISTFIELDS, {
             headers: new HttpHeaders({
                 Authorization: `Bearer ${authtoken}`
@@ -63,14 +62,14 @@ export class DriveService {
         });   
     }
 
-    private getTypeByName(type:string){
-        if(type == 'legends'){
-            return this.LEGENDITEMS
-        } else if(type == 'modules'){
+    public getTypeByName(type:string){
+        if(type === 'legends' || type === 'characters' || type === 'generators'){
+            return this.QPARSEITEMS
+        } else if(type === 'modules'){
             return this.QMODULITEMS
-        } else if(type == 'music'){
+        } else if(type === 'ambience'){
             return this.QAUDIOITEMS
-        } else if(type == 'images'){
+        } else if(type === 'gallery'){
             return this.QIMAGEITEMS
         }
         return ''

@@ -21,7 +21,7 @@
 <ion-content padding>
 	<gridster [options]="options">
 		<gridster-item [item]="dashboard[0]">
-			<lateral-menu [campaign]="campaign"></lateral-menu>
+			<lateral-menu [campaign]="campaign" [user]="userService.getCurrentUser()"></lateral-menu>
 		</gridster-item>
 		<gridster-item [item]="dashboard[1]">
 			<central-menu></central-menu>

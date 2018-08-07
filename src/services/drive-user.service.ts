@@ -56,7 +56,6 @@ export class UserService {
         });
     }
 
-    //TODO: Rework
     public signOut(): void {
         this.googleAuthService.getAuth().subscribe((auth) => {
             try {

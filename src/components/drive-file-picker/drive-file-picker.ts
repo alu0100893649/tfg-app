@@ -25,7 +25,7 @@ export class DriveFilePickerComponent {
 
   	constructor(private userService: UserService, private driveResource: DriveService, private navCtrl:NavController,
   				private gapiService: GoogleApiService, private modalService: ModalService) {
-    	this.gapiService.onLoad().subscribe();
+    	  this.gapiService.onLoad().subscribe();
         if(!this.userService.isUserSignedIn()){
             this.userService.signIn()
         }

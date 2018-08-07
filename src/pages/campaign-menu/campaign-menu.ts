@@ -3,6 +3,11 @@ import { IonicPage, NavController, ModalController, AlertController, NavParams }
 import { PreferencesComponent } from '../../components/preferences/preferences';
 import { Storage } from '@ionic/storage';
 import { GridsterModule, GridsterConfig, GridsterItem, DisplayGrid } from 'angular-gridster2';
+import { GoogleApiService } from 'ng-gapi';
+import { UserService } from '../../services/drive-user.service';
+import { DriveService } from '../../services/drive.service';
+import { ModalService } from '../../services/modal-data-pass.service';
+
 /**
  * Generated class for the CampaignMenuPage page.
  *
@@ -24,8 +29,16 @@ export class CampaignMenuPage implements OnInit {
 	combatants:any // roster + monster selected
 	showedComponents:any // components in showerMenu
 
-	constructor(private storage: Storage, private alertCtrl: AlertController,
+	constructor(private userService: UserService, private driveResource: DriveService,
+    			private gapiService: GoogleApiService, private modalService: ModalService,
+    			private storage: Storage, private alertCtrl: AlertController,
 				public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
+		
+		this.gapiService.onLoad().subscribe();
+        if(!this.userService.isUserSignedIn()){
+            this.userService.signIn()
+        }
+
 		this.campaign = navParams.get('campaign');
 		this.campaignName = navParams.get('name');
 		if(this.campaign.preferences === undefined){
@@ -33,15 +46,25 @@ export class CampaignMenuPage implements OnInit {
 				'ambience':{},
 				'modules':{},
 				'gallery':{},
-				//'roster':{},
-				//'chars':{},
+				'roster':{},
+				'characters':{},
 				'legends':{},
-				//'generators':{}
+				'generators':{}
 			}
 		}
 	}
 
+	ionViewCanEnter(): boolean{
+		if(this.userService.isUserSignedIn()){
+      		return true;
+    	} else {
+      		return false;
+    	}		
+	}
+
 	ngOnInit(){
+		//suscribirse a una señal que te avise de cuando se desconecta el usuario
+		//Checkear siempre si el usuario está conectado antes de hacer nada
 		this.options = {
 			gridType: 'fit',
 			margin: 5,

@@ -15,7 +15,7 @@ import { ModalService } from '../../services/modal-data-pass.service'
   templateUrl: 'preferences.html'
 })
 export class PreferencesComponent implements OnInit{
-	folder_types:string[] = ['chars','legends','ambience', 'modules', 'gallery', 'roster', 'generators']
+	folder_types:string[] = [/*'chars',*/'legends','ambience', 'modules', 'gallery'/*, 'roster', 'generators'*/]
     folders_dict:any = {};
     folder_selected:string;
     icon:string = "cloud"
