@@ -6,4 +6,5 @@ export class ModalService {
   	public selectedPrefFolder = new EventEmitter()
   	public viewChanged = new EventEmitter()
   	public googleUserSubmitted = new EventEmitter()
+  	public preferencesUpdated = new EventEmitter()
 }

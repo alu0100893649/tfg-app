@@ -17,6 +17,11 @@ export class DriveService {
     private readonly QAUDIOITEMS: string = "+and+(mimeType+%3D+\'audio%2Fmpeg\'+or+mimeType+%3D+\'audio%2Fwav\')"
     private readonly QMODULITEMS: string = "+and+(mimeType+%3D+\'application%2Fpdf\')"
 
+    private readonly QALLSEARCH:string = "+and+(mimeType+%3D+\'image%2Fjpeg\'+or+mimeType+%3D+\'image%2Fpng\'" +
+                                            "+or+mimeType+%3D+\'text%2Fplain\'+or+mimeType+%3D+\'application%2Fvnd.google-apps.document\'" +  
+                                            "+or+mimeType+%3D+\'audio%2Fmpeg\'+or+mimeType+%3D+\'audio%2Fwav\'" +
+                                            "+or+mimeType+%3D+\'application%2Fpdf\')"
+                                            
     constructor(private httpClient: HttpClient) {
     
     }
@@ -71,6 +76,8 @@ export class DriveService {
             return this.QAUDIOITEMS
         } else if(type === 'gallery'){
             return this.QIMAGEITEMS
+        } else if(type === 'search'){
+            return this.QALLSEARCH
         }
         return ''
     }

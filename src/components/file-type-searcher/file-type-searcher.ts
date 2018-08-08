@@ -84,6 +84,7 @@ export class FileTypeSearcherComponent {
     		this.driveResource.getFolderFilesByType(this.actual_folder.parents[0], this.fileType, this.userService.getToken()).subscribe(res => this.setFiles(res));
     }
 
+    //Enviar a campaign-menu para que haga el management de enviarlo a AmbienceList, GalleryList o ComponentList (Procesado)
     selectFile(item){
     	console.log(item)
     }

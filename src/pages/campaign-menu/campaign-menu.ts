@@ -7,6 +7,7 @@ import { GoogleApiService } from 'ng-gapi';
 import { UserService } from '../../services/drive-user.service';
 import { DriveService } from '../../services/drive.service';
 import { ModalService } from '../../services/modal-data-pass.service';
+import { Platform } from 'ionic-angular';
 
 /**
  * Generated class for the CampaignMenuPage page.
@@ -31,7 +32,7 @@ export class CampaignMenuPage implements OnInit {
 
 	constructor(private userService: UserService, private driveResource: DriveService,
     			private gapiService: GoogleApiService, private modalService: ModalService,
-    			private storage: Storage, private alertCtrl: AlertController,
+    			private storage: Storage, private alertCtrl: AlertController, public  platform:Platform,
 				public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
 		
 		this.gapiService.onLoad().subscribe();
@@ -46,12 +47,24 @@ export class CampaignMenuPage implements OnInit {
 				'ambience':{},
 				'modules':{},
 				'gallery':{},
-				'roster':{},
-				'characters':{},
+				/*'roster':{},
+				'characters':{},*/
 				'legends':{},
-				'generators':{}
+				//'generators':{}
 			}
 		}
+
+		platform.pause.subscribe(e => {
+			if(this.userService.isUserSignedIn()){
+				this.userService.signOut()
+			}
+		});
+
+		window.addEventListener('beforeunload', () => {
+			if(this.userService.isUserSignedIn()){
+				this.userService.signOut()
+			}
+		});
 	}
 
 	ionViewCanEnter(): boolean{
@@ -88,11 +101,7 @@ export class CampaignMenuPage implements OnInit {
 		let preferencesModal = this.modalCtrl.create(PreferencesComponent, { 'prefs': this.campaign.preferences } , {enableBackdropDismiss: false});
         preferencesModal.onDidDismiss(data => {
             this.campaign.preferences = data.folders_dict
-            for (let key in this.campaign.preferences){
-				if(this.campaign.preferences[key] != {}){
-
-				}
-			}
+			this.modalService.preferencesUpdated.emit(this.campaign)
         });
         preferencesModal.present();
 	}
@@ -122,6 +131,7 @@ export class CampaignMenuPage implements OnInit {
                 })
             })	        
 	    });
+	    this.userService.signOut()
     	return shouldLeave;
 	}
 
