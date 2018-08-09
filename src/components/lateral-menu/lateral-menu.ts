@@ -30,11 +30,9 @@ export class LateralMenuComponent implements OnInit {
 		}];
 		for(var key in this.campaign.preferences){
 			if(this.campaign.preferences[key]){
-
 				this.folders.push({'name':key, 'actual': this.campaign.preferences[key]['id'], 'info':this.campaign.preferences[key]})
 			}
 		}
-		console.log(this.folders)
 	}
 
 }

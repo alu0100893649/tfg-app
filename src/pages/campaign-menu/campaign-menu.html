@@ -24,10 +24,10 @@
 			<lateral-menu [campaign]="campaign" [user]="userService.getCurrentUser()"></lateral-menu>
 		</gridster-item>
 		<gridster-item [item]="dashboard[1]">
-			<central-menu></central-menu>
+			<central-menu [showedComponents]="showedComponents" [user]="userService.getCurrentUser()"></central-menu>
 		</gridster-item>
 		<gridster-item [item]="dashboard[2]">
-			<foot-menu></foot-menu>
+			<foot-menu [ambienceMusicSelected]="ambienceMusicSelected" [imagesSelected]="imagesSelected" [user]="userService.getCurrentUser()"></foot-menu>
 		</gridster-item>
 	</gridster>
 </ion-content>

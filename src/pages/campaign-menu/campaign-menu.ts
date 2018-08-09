@@ -27,8 +27,10 @@ export class CampaignMenuPage implements OnInit {
 	campaign:any
 	campaignName:string
 
-	combatants:any // roster + monster selected
-	showedComponents:any // components in showerMenu
+	combatants:any[] // roster + monster selected
+	showedComponents:any[] = [] // components in showerMenu
+	ambienceMusicSelected:any[] = [] // sounds selected and showed in ambience menu
+	imagesSelected:any[] = [] // images selected and showed in gallery
 
 	constructor(private userService: UserService, private driveResource: DriveService,
     			private gapiService: GoogleApiService, private modalService: ModalService,
@@ -76,8 +78,6 @@ export class CampaignMenuPage implements OnInit {
 	}
 
 	ngOnInit(){
-		//suscribirse a una señal que te avise de cuando se desconecta el usuario
-		//Checkear siempre si el usuario está conectado antes de hacer nada
 		this.options = {
 			gridType: 'fit',
 			margin: 5,
@@ -95,6 +95,25 @@ export class CampaignMenuPage implements OnInit {
 			{x: 0, y: 0, rows: 70, cols: 75},
 			{x: 0, y: 0, rows: 30, cols: 100}
 		];
+
+		this.modalService.selectedFileToAdd.subscribe((file) =>{
+			console.log(file)
+			if(file.mimeType.includes('text/plain') || file.mimeType.includes('document')){
+				console.log('document -> función para procesar texto')
+			} else if (file.mimeType.includes('mp3') || file.mimeType.includes('wav')){
+				this.ambienceMusicSelected.push(file)
+				console.log('music -> añadir file para que pueda funcionar en Ambience Music Component')
+			} else if (file.mimeType.includes('pdf')){
+				console.log('pdf -> enviar a Showed Components para mostrarse como ModuleViewer en Slider dentro de Central Component')
+			} else if (file.mimeType.includes('jpeg') || file.mimeType.includes('png')){
+				console.log('image -> enviar a images para mostrarse en la galería del FootMenu')
+			}
+		})
+
+		this.modalService.trackDeleted.subscribe((index) =>{
+			this.ambienceMusicSelected.splice(index, 1)
+			console.log(this.ambienceMusicSelected)
+		})
 	}
 
 	openPreferences(){

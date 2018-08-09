@@ -1,0 +1,13 @@
+<ion-content>
+  	<ion-grid>
+  		<ion-row *ngFor="let track of tracks; index as i">
+  			<ion-col col-3><ion-label>{{track.name}}</ion-label></ion-col>
+  			<ion-col col-8>
+  				<audio controls="controls" loop>
+	    			<source src="https://docs.google.com/uc?export=download&id={{track.id}}" type="{{track.mimeType}}">
+				</audio>
+  			</ion-col>
+  			<ion-col col-1><button ion-button (click)="removeTrack(i)"><ion-icon name="trash" color="danger"></ion-icon></button></ion-col>
+  		</ion-row>
+  	</ion-grid>
+</ion-content>

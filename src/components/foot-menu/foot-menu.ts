@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 /**
  * Generated class for the FootMenuComponent component.
@@ -7,16 +7,16 @@ import { Component } from '@angular/core';
  * Components.
  */
 @Component({
-  selector: 'foot-menu',
-  templateUrl: 'foot-menu.html'
+	selector: 'foot-menu',
+	templateUrl: 'foot-menu.html'
 })
 export class FootMenuComponent {
+	@Input("ambienceMusicSelected") ambienceMusicSelected:any[];
+	@Input("imagesSelected") imagesSelected:any[];
+	@Input("user") user:any;
 
-  text: string;
-
-  constructor() {
-    console.log('Hello FootMenuComponent Component');
-    this.text = 'Hello World';
-  }
+	constructor() {
+	
+	}
 
 }

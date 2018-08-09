@@ -44,7 +44,7 @@ export class FileTypeSearcherComponent {
 
   	setActualFolder(response){
       	this.actual_folder = response
-      	if(this.actual_folder.id == this.rootId){
+      	if(this.actual_folder.id == this.rootId || this.actual_folder.parents == undefined){
       		this.inRoot = true;
       	} else {
       		this.inRoot = false;
@@ -69,7 +69,6 @@ export class FileTypeSearcherComponent {
 
     setFiles(response){
     	  this.files = response.files
-        console.log(response.files)
     }
 
     onFolderClicked(item){
@@ -84,8 +83,8 @@ export class FileTypeSearcherComponent {
     		this.driveResource.getFolderFilesByType(this.actual_folder.parents[0], this.fileType, this.userService.getToken()).subscribe(res => this.setFiles(res));
     }
 
-    //Enviar a campaign-menu para que haga el management de enviarlo a AmbienceList, GalleryList o ComponentList (Procesado)
-    selectFile(item){
-    	console.log(item)
+    //Enviar a campaign-menu para que haga el management de enviarlo a AmbienceList, GalleryList o ComponentList
+    selectFile(file){
+      this.modalService.selectedFileToAdd.emit(file)
     }
 }

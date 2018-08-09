@@ -32,6 +32,9 @@ import { PreferencesComponent } from '../components/preferences/preferences';
 import { PickerComponent } from '../components/picker/picker';
 import { FileTypeSearcherComponent } from '../components/file-type-searcher/file-type-searcher';
 
+import { AmbienceComponent } from '../components/ambience/ambience';
+import { ModuleViewerComponent } from '../components/module-viewer/module-viewer';
+
 import { HttpClientModule } from '@angular/common/http';
 import {
     GoogleApiModule, 
@@ -71,7 +74,9 @@ let gapiClientConfig: NgGapiClientConfig = {
     LateralMenuComponent,
     CentralMenuComponent,
     FootMenuComponent,
-    FileTypeSearcherComponent
+    FileTypeSearcherComponent,
+    AmbienceComponent,
+    ModuleViewerComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,7 +107,9 @@ let gapiClientConfig: NgGapiClientConfig = {
     LateralMenuComponent,
     CentralMenuComponent,
     FootMenuComponent,
-    FileTypeSearcherComponent
+    FileTypeSearcherComponent,
+    AmbienceComponent,
+    ModuleViewerComponent,
   ],
   providers: [
     StatusBar,

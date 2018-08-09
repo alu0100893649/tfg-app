@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalService } from '../../services/modal-data-pass.service';
 /**
  * Generated class for the CentralMenuComponent component.
  *
@@ -7,16 +7,15 @@ import { Component } from '@angular/core';
  * Components.
  */
 @Component({
-  selector: 'central-menu',
-  templateUrl: 'central-menu.html'
+	selector: 'central-menu',
+	templateUrl: 'central-menu.html'
 })
 export class CentralMenuComponent {
+	@Input("showedComponents") showedComponents:any[];
+	@Input("user") user:any;
+	
+	constructor() {
 
-  text: string;
-
-  constructor() {
-    console.log('Hello CentralMenuComponent Component');
-    this.text = 'Hello World';
-  }
+	}
 
 }
