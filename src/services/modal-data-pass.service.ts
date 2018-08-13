@@ -8,4 +8,5 @@ export class ModalService {
   	public preferencesUpdated = new EventEmitter()
   	public selectedFileToAdd = new EventEmitter()
   	public trackDeleted = new EventEmitter()
+  	public imgDeleted = new EventEmitter()
 }

@@ -14,9 +14,13 @@ export class FootMenuComponent {
 	@Input("ambienceMusicSelected") ambienceMusicSelected:any[];
 	@Input("imagesSelected") imagesSelected:any[];
 	@Input("user") user:any;
+	actual_tab:number;
 
 	constructor() {
-	
+		this.actual_tab = 0
 	}
 
+	onTab(index){
+		this.actual_tab = index
+	}
 }

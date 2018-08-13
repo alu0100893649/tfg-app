@@ -1,4 +1,5 @@
-<!-- Generated template for the CentralMenuComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-slides class="image-slider" pager="true">
+	<ion-slide class="container" *ngFor="let component of showedComponents;  index as i">
+		<ndc-dynamic [ndcDynamicComponent]="showedComponents[i]" [ndcDynamicInputs]="showedComponentsInputs[i]"></ndc-dynamic>
+	</ion-slide>
+</ion-slides>

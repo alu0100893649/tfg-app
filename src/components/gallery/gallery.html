@@ -1,0 +1,6 @@
+<ion-slides class="image-slider" loop="false" slidesPerView="3">
+	<ion-slide class="container" *ngFor="let img of images;  index as i">
+		<img style="max-height: 100%, max-width: 100%" src="https://docs.google.com/uc?export=download&id={{img.id}}" class="thumb-img" imageViewer/>
+		<button class="btn" ion-button color=danger (click)="removeImg(i)"><ion-icon name="trash"></ion-icon></button>
+	</ion-slide>
+</ion-slides>

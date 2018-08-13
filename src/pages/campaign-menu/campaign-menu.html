@@ -7,7 +7,7 @@
 <ion-header>
 
 <ion-navbar>
-	<ion-title>campaign-menu</ion-title>
+	<ion-title>{{campaignName}}</ion-title>
 	<ion-buttons end>
 		<button ion-button icon-only (click)="openPreferences()">
 			<ion-icon name="build"></ion-icon>
@@ -24,7 +24,7 @@
 			<lateral-menu [campaign]="campaign" [user]="userService.getCurrentUser()"></lateral-menu>
 		</gridster-item>
 		<gridster-item [item]="dashboard[1]">
-			<central-menu [showedComponents]="showedComponents" [user]="userService.getCurrentUser()"></central-menu>
+			<central-menu [showedComponents]="showedComponents" [showedComponentsInputs]="showedComponentsInputs" [user]="userService.getCurrentUser()"></central-menu>
 		</gridster-item>
 		<gridster-item [item]="dashboard[2]">
 			<foot-menu [ambienceMusicSelected]="ambienceMusicSelected" [imagesSelected]="imagesSelected" [user]="userService.getCurrentUser()"></foot-menu>

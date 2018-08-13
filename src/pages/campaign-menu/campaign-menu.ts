@@ -9,6 +9,9 @@ import { DriveService } from '../../services/drive.service';
 import { ModalService } from '../../services/modal-data-pass.service';
 import { Platform } from 'ionic-angular';
 
+import { ModuleViewerComponent } from '../../components/module-viewer/module-viewer';
+import { DomSanitizer } from '@angular/platform-browser';
+
 /**
  * Generated class for the CampaignMenuPage page.
  *
@@ -29,6 +32,7 @@ export class CampaignMenuPage implements OnInit {
 
 	combatants:any[] // roster + monster selected
 	showedComponents:any[] = [] // components in showerMenu
+	showedComponentsInputs:any[] = [] // inputs de los components in showerMenu
 	ambienceMusicSelected:any[] = [] // sounds selected and showed in ambience menu
 	imagesSelected:any[] = [] // images selected and showed in gallery
 
@@ -91,28 +95,31 @@ export class CampaignMenuPage implements OnInit {
 			},
 		};
 		this.dashboard = [
-			{x: 0, y: 0, rows: 69, cols: 25},
-			{x: 0, y: 0, rows: 70, cols: 75},
-			{x: 0, y: 0, rows: 30, cols: 100}
+			{x: 0, y: 0, rows: 59, cols: 25},
+			{x: 0, y: 0, rows: 60, cols: 75},
+			{x: 0, y: 0, rows: 40, cols: 100}
 		];
 
 		this.modalService.selectedFileToAdd.subscribe((file) =>{
-			console.log(file)
 			if(file.mimeType.includes('text/plain') || file.mimeType.includes('document')){
 				console.log('document -> función para procesar texto')
 			} else if (file.mimeType.includes('mp3') || file.mimeType.includes('wav')){
 				this.ambienceMusicSelected.push(file)
-				console.log('music -> añadir file para que pueda funcionar en Ambience Music Component')
 			} else if (file.mimeType.includes('pdf')){
-				console.log('pdf -> enviar a Showed Components para mostrarse como ModuleViewer en Slider dentro de Central Component')
+				this.showedComponentsInputs.push(file)
+				var moduleComponent = ModuleViewerComponent
+				this.showedComponents.push(moduleComponent)
 			} else if (file.mimeType.includes('jpeg') || file.mimeType.includes('png')){
-				console.log('image -> enviar a images para mostrarse en la galería del FootMenu')
+				this.imagesSelected.push(file)
 			}
 		})
 
 		this.modalService.trackDeleted.subscribe((index) =>{
 			this.ambienceMusicSelected.splice(index, 1)
-			console.log(this.ambienceMusicSelected)
+		})
+
+		this.modalService.imgDeleted.subscribe((index) =>{
+			this.imagesSelected.splice(index, 1)
 		})
 	}
 

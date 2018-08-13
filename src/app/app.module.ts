@@ -10,6 +10,7 @@ import { ModalService } from '../services/modal-data-pass.service'
 
 import { DynamicModule } from 'ng-dynamic-component';
 import { GridsterModule } from 'angular-gridster2';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -33,7 +34,10 @@ import { PickerComponent } from '../components/picker/picker';
 import { FileTypeSearcherComponent } from '../components/file-type-searcher/file-type-searcher';
 
 import { AmbienceComponent } from '../components/ambience/ambience';
+import { GalleryComponent } from '../components/gallery/gallery';
 import { ModuleViewerComponent } from '../components/module-viewer/module-viewer';
+
+import { SimplePdfViewerModule } from 'simple-pdf-viewer';
 
 import { HttpClientModule } from '@angular/common/http';
 import {
@@ -76,6 +80,7 @@ let gapiClientConfig: NgGapiClientConfig = {
     FootMenuComponent,
     FileTypeSearcherComponent,
     AmbienceComponent,
+    GalleryComponent,
     ModuleViewerComponent,
   ],
   imports: [
@@ -84,11 +89,13 @@ let gapiClientConfig: NgGapiClientConfig = {
     IonicStorageModule.forRoot(),
     DynamicModule.withComponents([PrincipalMenuComponent]),
     GridsterModule,
+    IonicImageViewerModule,
     HttpClientModule,
     GoogleApiModule.forRoot({
       provide: NG_GAPI_CONFIG,
       useValue: gapiClientConfig
     }),
+    SimplePdfViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -109,6 +116,7 @@ let gapiClientConfig: NgGapiClientConfig = {
     FootMenuComponent,
     FileTypeSearcherComponent,
     AmbienceComponent,
+    GalleryComponent,
     ModuleViewerComponent,
   ],
   providers: [

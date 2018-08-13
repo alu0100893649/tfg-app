@@ -1,0 +1,36 @@
+gallery {
+    .slide-zoom {
+        background: #e6e6e6;
+    }
+ 	
+    .thumb-img {
+    	padding-left:  5px;
+    	padding-right: 5px;
+    	background: white; /* Cambiar al color de fondo que crea conveniente con la nueva imagen de la pagina*/
+    }
+    .container {
+	  position: relative;
+	  width: 50%;
+	}
+
+	/* Make the image responsive */
+	.container img {
+	  width: 100%;
+	  height: auto;
+	}
+
+	/* Style the button and place it in the middle of the container/image */
+	.container .btn {
+	  position: absolute;
+	  top: 75%;
+	  left: 85%;
+	  transform: translate(-50%, -50%);
+	  -ms-transform: translate(-50%, -50%);
+	  background-color: #555;
+	  font-size: 16px;
+	  padding: 12px 24px;
+	  border: none;
+	  cursor: pointer;
+	  border-radius: 5px;
+	}
+}

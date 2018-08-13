@@ -1,1 +1,7 @@
-<ambience [tracks]="ambienceMusicSelected" ></ambience>
+<ion-buttons start>
+	<button ion-button (click)="onTab(0)">Ambience Music</button>
+	<button ion-button (click)="onTab(1)">Gallery</button>
+</ion-buttons>
+
+<ambience *ngIf="actual_tab == 0" [tracks]="ambienceMusicSelected" ></ambience>
+<gallery *ngIf="actual_tab == 1" [images]="imagesSelected"></gallery>

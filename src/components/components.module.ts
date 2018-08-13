@@ -9,6 +9,7 @@ import { LateralMenuComponent } from './lateral-menu/lateral-menu';
 import { CentralMenuComponent } from './central-menu/central-menu';
 import { FootMenuComponent } from './foot-menu/foot-menu';
 import { FileTypeSearcherComponent } from './file-type-searcher/file-type-searcher';
+import { GalleryComponent } from './gallery/gallery';
 @NgModule({
 	declarations: [MenuComponent,
     CustomTextComponent,
@@ -19,7 +20,8 @@ import { FileTypeSearcherComponent } from './file-type-searcher/file-type-search
     LateralMenuComponent,
     CentralMenuComponent,
     FootMenuComponent,
-    FileTypeSearcherComponent],
+    FileTypeSearcherComponent,
+    GalleryComponent],
 	imports: [],
 	exports: [MenuComponent,
     CustomTextComponent,
@@ -30,6 +32,7 @@ import { FileTypeSearcherComponent } from './file-type-searcher/file-type-search
     LateralMenuComponent,
     CentralMenuComponent,
     FootMenuComponent,
-    FileTypeSearcherComponent]
+    FileTypeSearcherComponent,
+    GalleryComponent]
 })
 export class ComponentsModule {}

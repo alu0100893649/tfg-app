@@ -12,6 +12,7 @@ import { ModalService } from '../../services/modal-data-pass.service';
 })
 export class CentralMenuComponent {
 	@Input("showedComponents") showedComponents:any[];
+	@Input("showedComponentsInputs") showedComponentsInputs:any[];
 	@Input("user") user:any;
 	
 	constructor() {
