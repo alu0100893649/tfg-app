@@ -1,0 +1,25 @@
+<ion-grid>
+	<ion-row>
+		<ion-col col-8>{{this.name}}</ion-col>
+		<ion-col *ngIf="this.number && this.category === 'NPC'" col-2>Cuantity: </ion-col>
+		<ion-col *ngIf="this.number && this.category === 'NPC'" col-2>{{this.number}}</ion-col>
+	</ion-row>
+	<ion-row>
+		<ion-col col-2>Health: </ion-col>
+		<ion-col col-1>{{this.health}}</ion-col>
+		<ion-col col-2>Defense: </ion-col>
+		<ion-col col-1>{{this.defense}}</ion-col>
+		<ion-col col-2>Quickness: </ion-col>
+		<ion-col col-1>{{this.quickness}}</ion-col>
+	</ion-row>
+	<ion-row>
+		<accordion style="width:100%" title="Lore">
+			{{this.lore}}
+		</accordion>
+	</ion-row>
+	<ion-row>
+		<accordion style="width:100%" title="Actions">
+			{{this.actions}}
+		</accordion>
+	</ion-row>
+</ion-grid>

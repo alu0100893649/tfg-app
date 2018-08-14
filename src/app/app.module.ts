@@ -36,8 +36,7 @@ import { FileTypeSearcherComponent } from '../components/file-type-searcher/file
 import { AmbienceComponent } from '../components/ambience/ambience';
 import { GalleryComponent } from '../components/gallery/gallery';
 import { ModuleViewerComponent } from '../components/module-viewer/module-viewer';
-
-import { SimplePdfViewerModule } from 'simple-pdf-viewer';
+import { CreatureViewerComponent } from '../components/creature-viewer/creature-viewer';
 
 import { HttpClientModule } from '@angular/common/http';
 import {
@@ -82,6 +81,7 @@ let gapiClientConfig: NgGapiClientConfig = {
     AmbienceComponent,
     GalleryComponent,
     ModuleViewerComponent,
+    CreatureViewerComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +95,6 @@ let gapiClientConfig: NgGapiClientConfig = {
       provide: NG_GAPI_CONFIG,
       useValue: gapiClientConfig
     }),
-    SimplePdfViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -118,6 +117,7 @@ let gapiClientConfig: NgGapiClientConfig = {
     AmbienceComponent,
     GalleryComponent,
     ModuleViewerComponent,
+    CreatureViewerComponent
   ],
   providers: [
     StatusBar,

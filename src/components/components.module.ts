@@ -10,6 +10,7 @@ import { CentralMenuComponent } from './central-menu/central-menu';
 import { FootMenuComponent } from './foot-menu/foot-menu';
 import { FileTypeSearcherComponent } from './file-type-searcher/file-type-searcher';
 import { GalleryComponent } from './gallery/gallery';
+import { CreatureViewerComponent } from './creature-viewer/creature-viewer';
 @NgModule({
 	declarations: [MenuComponent,
     CustomTextComponent,
@@ -21,7 +22,8 @@ import { GalleryComponent } from './gallery/gallery';
     CentralMenuComponent,
     FootMenuComponent,
     FileTypeSearcherComponent,
-    GalleryComponent],
+    GalleryComponent,
+    CreatureViewerComponent],
 	imports: [],
 	exports: [MenuComponent,
     CustomTextComponent,
@@ -33,6 +35,7 @@ import { GalleryComponent } from './gallery/gallery';
     CentralMenuComponent,
     FootMenuComponent,
     FileTypeSearcherComponent,
-    GalleryComponent]
+    GalleryComponent,
+    CreatureViewerComponent]
 })
 export class ComponentsModule {}

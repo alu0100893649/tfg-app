@@ -21,7 +21,7 @@ export class DriveService {
                                             "+or+mimeType+%3D+\'text%2Fplain\'+or+mimeType+%3D+\'application%2Fvnd.google-apps.document\'" +  
                                             "+or+mimeType+%3D+\'audio%2Fmp3\'+or+mimeType+%3D+\'audio%2Fwav\'" +
                                             "+or+mimeType+%3D+\'application%2Fpdf\')"
-                                            
+
     constructor(private httpClient: HttpClient) {
     
     }
@@ -80,6 +80,14 @@ export class DriveService {
             return this.QALLSEARCH
         }
         return ''
+    }
+
+    public getText(file_id:string, authtoken:string){
+        return this.httpClient.get(this.API_URL + "/files/" + file_id + "/export?mimeType=text%2Fplain", {
+            headers: new HttpHeaders({
+                Authorization: `Bearer ${authtoken}`
+            })
+        });
     }
 
 }

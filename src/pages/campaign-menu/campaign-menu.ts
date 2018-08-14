@@ -10,7 +10,7 @@ import { ModalService } from '../../services/modal-data-pass.service';
 import { Platform } from 'ionic-angular';
 
 import { ModuleViewerComponent } from '../../components/module-viewer/module-viewer';
-import { DomSanitizer } from '@angular/platform-browser';
+import { CreatureViewerComponent } from  '../../components/creature-viewer/creature-viewer';
 
 /**
  * Generated class for the CampaignMenuPage page.
@@ -31,6 +31,7 @@ export class CampaignMenuPage implements OnInit {
 	campaignName:string
 
 	combatants:any[] // roster + monster selected
+
 	showedComponents:any[] = [] // components in showerMenu
 	showedComponentsInputs:any[] = [] // inputs de los components in showerMenu
 	ambienceMusicSelected:any[] = [] // sounds selected and showed in ambience menu
@@ -58,6 +59,25 @@ export class CampaignMenuPage implements OnInit {
 				'legends':{},
 				//'generators':{}
 			}
+		}
+		if(this.campaign.saved === undefined){
+			this.campaign.saved = {
+				'showed':[],
+				'inputs':[],
+				'images':[],
+				'ambience':[]
+			}
+		} else {
+			for(let showed of this.campaign.saved.showed){
+				if(showed === 'pdf'){
+					this.showedComponents.push(ModuleViewerComponent)
+				} else if (showed === 'creature'){
+					this.showedComponents.push(CreatureViewerComponent)
+				}
+			}
+			this.showedComponentsInputs = this.campaign.saved.inputs
+			this.imagesSelected = this.campaign.saved.images
+			this.ambienceMusicSelected = this.campaign.saved.ambience
 		}
 
 		platform.pause.subscribe(e => {
@@ -103,6 +123,16 @@ export class CampaignMenuPage implements OnInit {
 		this.modalService.selectedFileToAdd.subscribe((file) =>{
 			if(file.mimeType.includes('text/plain') || file.mimeType.includes('document')){
 				console.log('document -> función para procesar texto')
+				let res = this.driveResource.getText(file.id, this.userService.getToken()).subscribe((res:any) =>{
+					for(let object of res){
+						var creature:any = object
+						this.showedComponentsInputs.push(creature)
+						var creatureComponent = CreatureViewerComponent
+						this.showedComponents.push(creatureComponent)
+					}
+					
+				});
+				
 			} else if (file.mimeType.includes('mp3') || file.mimeType.includes('wav')){
 				this.ambienceMusicSelected.push(file)
 			} else if (file.mimeType.includes('pdf')){
@@ -133,16 +163,23 @@ export class CampaignMenuPage implements OnInit {
 	}
 
 	async ionViewCanLeave(){
-		const shouldLeave = await this.confirmLeave();
-		//Usar también para guardar las cosas abiertas de la campaña
 		this.storage.get('campaigns').then((campaigns) => {
-	        let name = this.campaign.name
-	        let data = {
-	            desc: this.campaign.desc,
-	            date: this.campaign.date,
-	            imgRef: this.campaign.imgRef,
-	            preferences: this.campaign.preferences
-	        }
+			var showed:any = []
+			for(let comp of this.showedComponents){
+				var compo = comp.name
+				console.log(compo)
+				if(compo == 'ModuleViewerComponent'){
+					showed.push('pdf')
+				} else if (compo == 'CreatureViewerComponent'){
+					showed.push('creature')
+				}
+			}
+	        this.campaign.saved = {
+				'showed': showed,
+				'inputs': this.showedComponentsInputs,
+				'images': this.imagesSelected,
+				'ambience': this.ambienceMusicSelected
+			}
 	        let campns = {}
 	        if(campaigns == null){
                 campns[this.campaignName] = this.campaign
@@ -157,7 +194,11 @@ export class CampaignMenuPage implements OnInit {
                 })
             })	        
 	    });
-	    this.userService.signOut()
+
+		const shouldLeave = await this.confirmLeave();
+		if(shouldLeave){
+			this.userService.signOut()
+		}
     	return shouldLeave;
 	}
 

@@ -1,9 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
-/**
-'https://drive.google.com/file/d/' + this.file.id + '/preview'
- */
 @Component({
   selector: 'module-viewer',
   templateUrl: 'module-viewer.html'
