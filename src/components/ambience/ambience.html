@@ -1,6 +1,6 @@
 <ion-content>
-    <ion-list>
-      <ion-item *ngFor="let track of tracks; index as i">
+    <ion-list >
+      <ion-item no-lines [color]="even? 'norm-green' : 'soft-green'" *ngFor="let track of tracks; index as i; let even = even">
         <ion-row>
           <ion-col col-3>{{track.name}}</ion-col>
           <ion-col col-4>

@@ -9,4 +9,5 @@ export class ModalService {
   	public selectedFileToAdd = new EventEmitter()
   	public trackDeleted = new EventEmitter()
   	public imgDeleted = new EventEmitter()
+  	public slideDeleted = new EventEmitter()
 }

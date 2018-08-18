@@ -15,8 +15,11 @@ export class CentralMenuComponent {
 	@Input("showedComponentsInputs") showedComponentsInputs:any[];
 	@Input("user") user:any;
 	
-	constructor() {
+	constructor(private modalService:ModalService) {
 
 	}
 
+	removeSlide(index){
+		this.modalService.slideDeleted.emit(index);
+	}
 }

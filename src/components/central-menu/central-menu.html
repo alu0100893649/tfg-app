@@ -1,5 +1,6 @@
 <ion-slides class="image-slider" pager="true">
 	<ion-slide class="container" *ngFor="let component of showedComponents;  index as i">
 		<ndc-dynamic [ndcDynamicComponent]="showedComponents[i]" [ndcDynamicInputs]="showedComponentsInputs[i]"></ndc-dynamic>
+		<button class="btn" ion-button color=danger (click)="removeSlide(i)"><ion-icon name="trash"></ion-icon></button>
 	</ion-slide>
 </ion-slides>

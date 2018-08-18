@@ -115,9 +115,9 @@ export class CampaignMenuPage implements OnInit {
 			},
 		};
 		this.dashboard = [
-			{x: 0, y: 0, rows: 59, cols: 25},
-			{x: 0, y: 0, rows: 60, cols: 75},
-			{x: 0, y: 0, rows: 40, cols: 100}
+			{x: 0, y: 0, rows: 69, cols: 25},
+			{x: 0, y: 0, rows: 70, cols: 75},
+			{x: 0, y: 0, rows: 30, cols: 100}
 		];
 
 		this.modalService.selectedFileToAdd.subscribe((file) =>{
@@ -150,6 +150,11 @@ export class CampaignMenuPage implements OnInit {
 
 		this.modalService.imgDeleted.subscribe((index) =>{
 			this.imagesSelected.splice(index, 1)
+		})
+
+		this.modalService.slideDeleted.subscribe((index) => {
+			this.showedComponents.splice(index, 1)
+			this.showedComponentsInputs.splice(index, 1)
 		})
 	}
 
