@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, ModalController, AlertController, NavParams } from 'ionic-angular';
+import { NavController, ModalController, AlertController, NavParams } from 'ionic-angular';
 import { PreferencesComponent } from '../../components/preferences/preferences';
 import { Storage } from '@ionic/storage';
-import { GridsterModule, GridsterConfig, GridsterItem, DisplayGrid } from 'angular-gridster2';
+import { GridsterConfig, GridsterItem, DisplayGrid } from 'angular-gridster2';
 import { GoogleApiService } from 'ng-gapi';
 import { UserService } from '../../services/drive-user.service';
 import { DriveService } from '../../services/drive.service';
@@ -122,8 +122,7 @@ export class CampaignMenuPage implements OnInit {
 
 		this.modalService.selectedFileToAdd.subscribe((file) =>{
 			if(file.mimeType.includes('text/plain') || file.mimeType.includes('document')){
-				console.log('document -> función para procesar texto')
-				let res = this.driveResource.getText(file.id, this.userService.getToken()).subscribe((res:any) =>{
+				this.driveResource.getText(file.id, this.userService.getToken()).subscribe((res:any) =>{
 					for(let object of res){
 						var creature:any = object
 						this.showedComponentsInputs.push(creature)

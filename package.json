@@ -33,6 +33,7 @@
     "angular-gridster2": "^6.0.5",
     "body-parser": "^1.18.3",
     "cordova-android": "7.0.0",
+    "cordova-browser": "5.0.4",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-document-viewer": "^0.9.10",
     "cordova-plugin-file": "^6.0.1",
@@ -55,6 +56,7 @@
     "rxjs": "5.5.11",
     "simple-pdf-viewer": "^2.0.0",
     "sw-toolbox": "3.6.0",
+    "web": "0.0.2",
     "zone.js": "0.8.26"
   },
   "devDependencies": {
@@ -76,7 +78,8 @@
       "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ]
   }
 }

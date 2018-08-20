@@ -25,7 +25,8 @@ import { CreatureViewerComponent } from './creature-viewer/creature-viewer';
     GalleryComponent,
     CreatureViewerComponent],
 	imports: [],
-	exports: [MenuComponent,
+	exports: [
+    MenuComponent,
     CustomTextComponent,
     PrincipalMenuComponent,
     CampaignCreatorComponent,

@@ -3,7 +3,6 @@ import * as _ from "lodash";
 import { GoogleAuthService } from "ng-gapi/lib/GoogleAuthService";
 import { NgGapiClientConfig } from "ng-gapi";
 import GoogleUser = gapi.auth2.GoogleUser;
-import GoogleAuth = gapi.auth2.GoogleAuth;
 
 @Injectable()
 export class UserService {

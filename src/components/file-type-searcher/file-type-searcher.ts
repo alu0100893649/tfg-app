@@ -26,8 +26,8 @@ export class FileTypeSearcherComponent {
     @Input("name") rootName:string;
     @Input("id")   rootId:string;
 
-   	constructor(private userService: UserService, private driveResource: DriveService,
-    				private gapiService: GoogleApiService, private modalService: ModalService) {
+   	constructor(private userService: UserService, private driveResource: DriveService, private modalService: ModalService) {
+    
     }
 
     ngOnInit(){

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalService } from '../../services/modal-data-pass.service'
-import { CustomTextComponent } from '../../components/custom-text/custom-text';
 import { PrincipalMenuComponent } from '../../components/principal-menu/principal-menu';
 import { CampaignSelectorComponent } from '../../components/campaign-selector/campaign-selector';
 

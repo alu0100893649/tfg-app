@@ -1,0 +1,7 @@
+{
+    "name": "Fantasy Teller",
+    "description": "App  para direccion de partidas de rol",
+    "repository": "https://github.com/alu0100893649/tfg-app",
+    "logo": "",
+    "keywords": ["Ionic3", "heroku", "RPG"]
+}
